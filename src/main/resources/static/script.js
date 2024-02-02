@@ -3,27 +3,27 @@ question_list = [
         question: "Who's assassination started WW1?",
         answers: ["A) Emperor Peter III", "B) Archduke Franz Ferdinand", "C) King George V", "D) Prince Von Stauffenberg"],
         CorrectAnswerIdx: 1,
-        UserAnswer: -1
+        UserAnswerIdx: -1
     },
     {
         question: "When did WW1 end?",
         answers: ["A) 1914", "B) 1928", "C) 1945", "D) 1918"],
         CorrectAnswerIdx: 3,
-        UserAnswer: -1
+        UserAnswerIdx: -1
     },
     {
         question: "Who was the British Prime Minister During WW2?",
         answers: ["A) Wilfrid Laurier", "B) Stanley Baldwin", "C) Winston Churchill", "D) Clement Atlee"],
         CorrectAnswerIdx: 2,
-        UserAnswer: -1
+        UserAnswerIdx: -1
     },
     {
         question: "Who was defeated in the battle of Waterloo in 1815?",
         answers: ["A) Marcus Aurelius", "B) Erwin Rommel", "C) Napoleon Bonaparte", "D) Arthur Wellesley"],
         CorrectAnswerIdx: 2,
-        UserAnswer: -1
+        UserAnswerIdx: -1
     }
-    
+    //-1 User Answers means unanswered
 ];
 
 let questionIndex = 0;
@@ -48,13 +48,13 @@ function loadQuestion(){
 function nextQuestion(){
     if(questionIndex >= (question_list.length - 1)){
         window.alert("This is the last question, there is no next question");
-    }else if(question_list[questionIndex].UserAnswer == -1){
+    }else if(question_list[questionIndex].UserAnswerIdx == -1){
         window.alert("Please select an answer before moving to the next question")
     }else{
         unpressButtons();
         questionIndex++;
-        if(question_list[questionIndex].UserAnswer != -1){
-            answerButtons[question_list[questionIndex].UserAnswer].classList.add("pressed")
+        if(question_list[questionIndex].UserAnswerIdx != -1){
+            answerButtons[question_list[questionIndex].UserAnswerIdx].classList.add("pressed")
         }
         loadQuestion();
     }
@@ -73,7 +73,7 @@ function selectAnswer(answerIndex) {
     //Unpressses all buttons and shows put the pressed tag on the newly pressed button
     unpressButtons();
     answerButtons[answerIndex].classList.add("pressed");
-    question_list[questionIndex].UserAnswer = answerIndex;
+    question_list[questionIndex].UserAnswerIdx = answerIndex;
 }
 
 function prevQuestion(){
@@ -82,16 +82,15 @@ function prevQuestion(){
     }else{
         questionIndex--;
         loadQuestion();
-
         unpressButtons();
-        answerButtons[question_list[questionIndex].UserAnswer].classList.add("pressed");
+        answerButtons[question_list[questionIndex].UserAnswerIdx].classList.add("pressed");
     }  
 }
 
 function AllQuestionsAnswered(){
     QuestionsAnswered = true;
     for(let i = 0; i < question_list.length; i++){
-        if(question_list[i].UserAnswer == -1){
+        if(question_list[i].UserAnswerIdx == -1){
             QuestionsAnswered = false;
         }
     } 
@@ -106,7 +105,7 @@ function submitAnswers(){
         window.alert("Answer all questions before submitting");
     }else{
         for(let i = 0; i < question_list.length; i++){
-            if(question_list[i].UserAnswer == question_list[i].CorrectAnswerIdx){
+            if(question_list[i].UserAnswerIdx == question_list[i].CorrectAnswerIdx){
                 score++;
             }
         } 
@@ -120,10 +119,15 @@ function displayResults() {
     let resultsPage = "<h1>Quiz Results</h1>";
 
     for (let i = 0; i < question_list.length; i++) {
-        resultsPage += "<div class='result-question'>";
-        resultsPage += "<p><strong>Question " + (i + 1) + ":</strong> " + question_list[i].question + "</p>";
-        resultsPage += "<p>Your Answer: " + question_list[i].answers[question_list[i].UserAnswer] + "</p>";
+        resultsPage += "<div class='question-Result-box'>";
+        resultsPage += "<p><b> Question " + (i + 1) + ":</b> " + question_list[i].question + "</p>";
+        resultsPage += "<p> Your Answer: " + question_list[i].answers[question_list[i].UserAnswerIdx] + "</p>";
         resultsPage += "<p> Correct Answer: " + question_list[i].answers[question_list[i].CorrectAnswerIdx] + " </p>";
+        if(question_list[i].CorrectAnswerIdx == question_list[i].UserAnswerIdx){
+            resultsPage += "<p><FONT COLOR=\"GREEN\"> Correct :) </FONT></p>";
+        }else{
+            resultsPage += "<p><FONT COLOR=\"RED\"> Incorrect :( </FONT></p>";
+        }
 
         resultsPage += "</div>";
     }
