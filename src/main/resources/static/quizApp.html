@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* means takes entire vertical height (vh)*/
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Multiple Choice Quiz</title>
+    
+
+</head>
+<body>
+    <div id="background">
+        <div id="question-box">
+            <h1 id = title>History Quiz App</h1>
+            <p id="question-text">Question text will go here</p>
+            <div id="answer-buttons">
+                <button class="answer-button" onclick = "selectAnswer(0)">A</button>
+                <button class="answer-button" onclick = "selectAnswer(1)">B</button>
+                <button class="answer-button" onclick = "selectAnswer(2)">C</button>
+                <button class="answer-button" onclick = "selectAnswer(3)">D</button>
+            </div>
+            <div id="NextandPrevButtons">
+            
+                <button id="previous-button" onclick= "prevQuestion()" >Previous</button>
+                <button id="next-button" onclick= "nextQuestion()" >Next</button>
+                
+            </div>
+            <div id="SubmitButton-container">
+                <button id="submit-button" onclick = "submitAnswers()">Submit</button>
+                
+            </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

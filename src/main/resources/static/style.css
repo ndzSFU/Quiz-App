@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  justify-content: center;
+  margin: 0px;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url(BritishBackground.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#background {
+  background-color: antiquewhite;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  padding: 35px;
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#question-box{
+  margin-bottom: 35px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.answer-button{
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.answer-button.pressed {
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.29); 
+  transform: scale(0.93);
+}
+
+#NextandPrevButtons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#next-button, #previous-button {
+  display: block;
+  width: 42%; 
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: whitesmoke;
+  color: black;
+}
+
+#previous-button:active,#next-button:active,#submit-button:active { 
+  transform: scale(0.95); 
+  /* Scaling button to 0.98 to its original size */ 
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.29); 
+  /* Lowering the shadow */ 
+} 
+
+#submit-button{
+  display: block;
+  width: 70%;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #2596be;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* the div */
+#SubmitButton-container{
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
