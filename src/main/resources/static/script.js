@@ -111,11 +111,28 @@ function submitAnswers(){
             }
         } 
         window.alert("Your score is: " + score + "/4");
+
+        displayResults();
     }
-    
 }
 
-//Loads first question
+function displayResults() {
+    let resultsPage = "<h1>Quiz Results</h1>";
+
+    for (let i = 0; i < question_list.length; i++) {
+        resultsPage += "<div class='result-question'>";
+        resultsPage += "<p><strong>Question " + (i + 1) + ":</strong> " + question_list[i].question + "</p>";
+        resultsPage += "<p>Your Answer: " + question_list[i].answers[question_list[i].UserAnswer] + "</p>";
+        resultsPage += "<p> Correct Answer: " + question_list[i].answers[question_list[i].CorrectAnswerIdx] + " </p>";
+
+        resultsPage += "</div>";
+    }
+
+    // Override Question box and put the results in it instead of the question buttons
+    document.getElementById("question-box").innerHTML = resultsPage;
+}
+
+//Loads first question, intializes page
 loadQuestion();
 
 
