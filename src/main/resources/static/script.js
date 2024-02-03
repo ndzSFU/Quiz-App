@@ -123,13 +123,12 @@ function displayResults() {
         resultsPage += "<p><b> Question " + (i + 1) + ":</b> " + question_list[i].question + "</p>";
         resultsPage += "<p> Your Answer: " + question_list[i].answers[question_list[i].UserAnswerIdx] + "</p>";
         resultsPage += "<p> Correct Answer: " + question_list[i].answers[question_list[i].CorrectAnswerIdx] + " </p>";
+
         if(question_list[i].CorrectAnswerIdx == question_list[i].UserAnswerIdx){
             resultsPage += "<p><FONT COLOR=\"GREEN\"> Correct :) </FONT></p>";
         }else{
-            resultsPage += "<p><FONT COLOR=\"RED\"> Incorrect :( </FONT></p>";
+            resultsPage += "<p><FONT COLOR=\"RED\"> Incorrect :( </FONT></p></div>";
         }
-
-        resultsPage += "</div>";
     }
 
     // Override Question box and put the results in it instead of the question buttons
