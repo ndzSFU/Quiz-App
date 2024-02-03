@@ -119,7 +119,6 @@ function displayResults() {
     let resultsPage = "<h1>Quiz Results</h1>";
 
     for (let i = 0; i < question_list.length; i++) {
-        resultsPage += "<div class='question-Result-box'>";
         resultsPage += "<p><b> Question " + (i + 1) + ":</b> " + question_list[i].question + "</p>";
         resultsPage += "<p> Your Answer: " + question_list[i].answers[question_list[i].UserAnswerIdx] + "</p>";
         resultsPage += "<p> Correct Answer: " + question_list[i].answers[question_list[i].CorrectAnswerIdx] + " </p>";
@@ -127,7 +126,7 @@ function displayResults() {
         if(question_list[i].CorrectAnswerIdx == question_list[i].UserAnswerIdx){
             resultsPage += "<p><FONT COLOR=\"GREEN\"> Correct :) </FONT></p>";
         }else{
-            resultsPage += "<p><FONT COLOR=\"RED\"> Incorrect :( </FONT></p></div>";
+            resultsPage += "<p><FONT COLOR=\"RED\"> Incorrect :( </FONT></p>";
         }
     }
 
